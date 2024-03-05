@@ -54,6 +54,12 @@ class OverworldMap {
         }
 
         this.isCutscenePlaying = false;
+
+        //Reset NPCs to do their idle behavior
+        Object.values(this.GameObjects).forEach(object => object.doBehaviorEvent(this))
+
+
+
     }
 
     addWall(x,y){
@@ -113,8 +119,8 @@ window.OverworldMaps = {
             [utils.asGridCoords(8,7)]: true,
             [utils.asGridCoords(1,3)]: true,
             [utils.asGridCoords(2,3)]: true,
-            [utils.asGridCoords(3,3.5)]: true,
-            [utils.asGridCoords(4,3.5)]: true,
+            [utils.asGridCoords(3,3)]: true,
+            [utils.asGridCoords(4,3)]: true,
             [utils.asGridCoords(5,3)]: true,
             [utils.asGridCoords(6,4)]: true,
             [utils.asGridCoords(6,3)]: true,
@@ -126,6 +132,14 @@ window.OverworldMaps = {
             [utils.asGridCoords(8,1)]: true,
             [utils.asGridCoords(9,3)]: true,
             [utils.asGridCoords(10,3)]: true,
+            [utils.asGridCoords(1,-1)]: true,
+            [utils.asGridCoords(2,-1)]: true,
+            [utils.asGridCoords(3,-1)]: true,
+            [utils.asGridCoords(4,-1)]: true,
+            [utils.asGridCoords(5,-1)]: true,
+            [utils.asGridCoords(6,-1)]: true,
+            [utils.asGridCoords(7,-1)]: true,
+            [utils.asGridCoords(8,-1)]: true,
         },
     }, 
 
