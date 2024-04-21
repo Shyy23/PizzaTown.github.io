@@ -10,16 +10,18 @@ class GameObject {
             src: config.src || "images/characters/people/hero.png",
        });
 
+       //These happen once on map startup
        this.behaviorLoop = config.behaviorLoop || [];
        this.behaviorLoopIndex = 0;
+       this.talking = config.talking || [];
+       this.retryTimeout = null;
 
     }
 
 
 mount(map){
-    console.log("mounting!");
     this.isMounted = true;
-    map.addWall(this.x, this.y);
+
 
     //Jika kita punya behavior, kick off after a short delay
     setTimeout(() => {
@@ -35,7 +37,18 @@ async doBehaviorEvent(map){
 
     //Don't do anything if there is a more important cutscene or i don't have config to do anything
     //anyway.
-    if(map.isCutscenePlaying || this.behaviorLoop.length === 0){
+    if( this.behaviorLoop.length === 0 || this.isStanding){
+        return;
+    }
+
+    if(map.isCutscenePlaying){
+
+        if(this.retryTimeout){
+            clearTimeout(this.retryTimeout);
+        }
+        this.retryTimeout = setTimeout(() => {
+            this.doBehaviorEvent(map);
+        },1000)
         return;
     }
 

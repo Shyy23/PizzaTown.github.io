@@ -1,0 +1,22 @@
+.Hud {
+    position: absolute;
+    left: 2px;
+    top: 9px;
+    image-rendering: pixelated;
+}
+.Hud .Combatant {
+    position: relative;
+    margin-bottom: 10px;
+}
+.Hud .Combatant_type {
+    display: none;
+}
+.Hud .Combatant[data-active="false"]{
+    opacity: 1;
+    transform: scale(1);
+}
+.Hud .Combatant[data-active="false"]{
+    opacity: 1;
+    transform: scale(1);
+}
+
